@@ -1,3 +1,3 @@
 # musicAppBackend
 
-## created with Node.js GraphQL SQLite
+## created with Node.js GraphQL/Prisma SQLite
