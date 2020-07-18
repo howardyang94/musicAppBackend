@@ -1,0 +1,5 @@
+# Prisma Migrate lockfile v1
+
+20200714110503-init
+20200715102727-add-user-model
+20200715104736-user-email-unique
