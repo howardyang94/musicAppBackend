@@ -1,3 +1,3 @@
-# musicAppBackend
+# Back End of (Name TBD) Web Application
 
-## created with Node.js GraphQL/Prisma SQLite
+## Written in JavaScript, created using  Node.js , GraphQL , Prisma , SQLite
