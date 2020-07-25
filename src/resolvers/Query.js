@@ -1,11 +1,6 @@
 async function feed(parent, args, context, info) {
-    console.log(args)
     let where = {AND : []}
-    // if(!args) {
-    //     console.log('no args')
-    // }
     if(args.filter) {
-        console.log(args.filter)
         where.OR =  [
                 { description: { contains: args.filter } },
                 { title: { contains: args.filter } },
@@ -16,7 +11,6 @@ async function feed(parent, args, context, info) {
     if(args.id) {
         where.id = Number(args.id)
     } 
-    // where.AND = []
     if(args.title) {
         where.AND.push({title: {contains: args.title}})
     }
@@ -38,13 +32,12 @@ async function feed(parent, args, context, info) {
             } else {
                 where.OR = where.OR.concat(or)
             }
-            // console.log(where.OR)
         }
     }
     if(args.desc) {
         where.AND.push({description: {contains: args.desc}})
     }
-    console.log(where)
+    // console.log(where)
     const links = await context.prisma.link.findMany({
         where,
         skip: args.skip,
