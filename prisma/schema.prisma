@@ -11,8 +11,8 @@ model Link {
     id          Int         @id @default(autoincrement())
     createdAt   DateTime    @default(now())
     title       String
-    artist      String
-    genre       String
+    artist      String  
+    tags        String      //Tag[] // @relation(references: [id])
     description String
     url         String
     // musicUrl String
@@ -22,6 +22,11 @@ model Link {
     postedById  Int?
     // votes       Vote[]
 }
+// model Tag {
+//     id          Int         @id @default(autoincrement())
+//     name        String      @unique
+//     links       Link[]      // @relation(references: [id])
+// }
 
 // model Url {
 
@@ -38,3 +43,7 @@ model User {
 
 // npx prisma studio --experimental
 // localhost:5555
+
+// npx prisma migrate save --name "" --experimental
+// npx prisma migrate up --experimental
+// npx prisma generate

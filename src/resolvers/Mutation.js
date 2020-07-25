@@ -36,17 +36,29 @@ async function login(parent, args, context, info) {
 
 function post(parent, args, context, info) {
     const userId = getUserId(context)
-
     const newLink = context.prisma.link.create({
         data: {
             title: args.title,
             artist: args.artist,
-            genre: args.genre,
+            // genre: args.genre,
+            tags: args.tags,
             url: args.url,
             description: args.description,
             postedBy: { connect: { id: userId} },
         }
     })
+    // console.log(args.tags)
+    // if(args.tags) {
+    //     const arr = []
+    //     for(let tag of args.tags.split(' ')) {
+    //         arr.push({
+    //             name: tag
+    //         })
+    //     }
+    //     console.log(arr)
+    //     newLink.tags = arr
+    //     console.log(newLink)
+    // } 
     context.pubsub.publish("NEW_LINK", newLink)
 
     return newLink

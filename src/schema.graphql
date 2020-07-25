@@ -1,12 +1,16 @@
 type Query {
-    feed(filter: String, skip: Int, take: Int, id: Int, orderBy: LinkOrderByInput): Feed!
+    feed(filter: String, title: String, artist: String, tags: String, match: String, desc: String skip: Int, take: Int, id: Int, orderBy: LinkOrderByInput): Feed!
     findLinkId(id: ID!): Link  # select by link id orderBy: LinkOrderByInput
 }
 type Mutation {
-    post(title:String!, artist:String!, url:String, description:String, genre:String): Link!
+    post(title:String!, artist:String!, url:String, description:String, tags:String): Link!
     signup(email: String!, password: String!, name: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
 }
+# enum Match {
+#   any
+#   all
+# }
 enum Sort {
     asc
     desc
@@ -22,11 +26,16 @@ type Link {
     createdAt: String!   
     title: String!
     artist: String!
-    genre: String
+    tags: String
     description: String
     url: String
     postedBy: User
 }
+# type Tag {
+#   id: ID!
+#   name: String!
+#   links: [Link!]!
+# }
 type Feed {
     links: [Link!]!
     count: Int!

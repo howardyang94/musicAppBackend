@@ -11,7 +11,7 @@ async function main() {
             title: 'Everlong', 
             description: 'Hit Single found on 1997 album "The Colour And the Shape"', 
             url: 'https://www.discogs.com/Foo-Fighters-Colour-The-Shape/master/62129 ; https://www.youtube.com/watch?v=C5oeWHngDS4',
-            genre: 'Rock'
+            tags: 'Rock'
         },
     })
     const allLinks = await prisma.link.findMany()

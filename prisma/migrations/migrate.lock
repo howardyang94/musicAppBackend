@@ -3,3 +3,7 @@
 20200714110503-init
 20200715102727-add-user-model
 20200715104736-user-email-unique
+20200719124001-genre-to-tags
+20200719150305-tag-link-relation
+20200719155412-tag-link-implicit-relation
+20200719182936-tag-save-as-single-string
