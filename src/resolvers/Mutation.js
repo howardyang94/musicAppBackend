@@ -40,25 +40,12 @@ function post(parent, args, context, info) {
         data: {
             title: args.title,
             artist: args.artist,
-            // genre: args.genre,
             tags: args.tags,
             url: args.url,
             description: args.description,
             postedBy: { connect: { id: userId} },
         }
     })
-    // console.log(args.tags)
-    // if(args.tags) {
-    //     const arr = []
-    //     for(let tag of args.tags.split(' ')) {
-    //         arr.push({
-    //             name: tag
-    //         })
-    //     }
-    //     console.log(arr)
-    //     newLink.tags = arr
-    //     console.log(newLink)
-    // } 
     context.pubsub.publish("NEW_LINK", newLink)
 
     return newLink
@@ -89,9 +76,26 @@ function post(parent, args, context, info) {
 
 //     return newVote
 // }
+function edit(parent, args, context, info) {
+    
+    const editLink = context.prisma.link.update({ 
+        where: {id: Number(args.id)},
+        data: {
+            title: args.title,
+            artist: args.artist,
+            url: args.url,
+            description: args.description,
+            tags: args.tags        
+        }
+    })
+    // context.pubsub.publish("NEW_LINK", editLink)
+    return editLink
+}
+
 module.exports = {
     signup,
     login,
     post,
+    edit,
     // vote,
 }

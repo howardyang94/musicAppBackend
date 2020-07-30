@@ -6,6 +6,7 @@ type Mutation {
     post(title:String!, artist:String!, url:String, description:String, tags:String): Link!
     signup(email: String!, password: String!, name: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
+    edit(id:ID!, title:String, artist:String, url:String, description:String, tags:String): Link!
 }
 # enum Match {
 #   any
