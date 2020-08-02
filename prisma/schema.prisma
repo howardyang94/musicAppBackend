@@ -12,26 +12,15 @@ model Link {
     createdAt   DateTime    @default(now())
     title       String
     artist      String  
-    tags        String      //Tag[] // @relation(references: [id])
+    tags        String
     description String
     url         String
     // musicUrl String
     // discogsUrl  String
-
     postedBy    User?       @relation(fields: [postedById], references: [id])
     postedById  Int?
     // votes       Vote[]
 }
-// model Tag {
-//     id          Int         @id @default(autoincrement())
-//     name        String      @unique
-//     links       Link[]      // @relation(references: [id])
-// }
-
-// model Url {
-
-
-// }
 
 model User {
     id          Int         @id @default(autoincrement())

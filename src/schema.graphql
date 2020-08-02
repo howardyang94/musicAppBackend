@@ -7,11 +7,9 @@ type Mutation {
     signup(email: String!, password: String!, name: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
     edit(id:ID!, title:String, artist:String, url:String, description:String, tags:String): Link!
+    remove(id:ID!): Link!
 }
-# enum Match {
-#   any
-#   all
-# }
+
 enum Sort {
     asc
     desc
@@ -32,11 +30,7 @@ type Link {
     url: String
     postedBy: User
 }
-# type Tag {
-#   id: ID!
-#   name: String!
-#   links: [Link!]!
-# }
+
 type Feed {
     links: [Link!]!
     count: Int!
