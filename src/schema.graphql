@@ -1,5 +1,5 @@
 type Query {
-    feed(filter: String, title: String, artist: String, tags: String, match: String, desc: String skip: Int, take: Int, id: Int, orderBy: LinkOrderByInput): Feed!
+    feed(filter: String, title: String, artist: String, tags: String, match: String, description: String skip: Int, take: Int, id: Int, orderBy: LinkOrderByInput): Feed!
     findLinkId(id: ID!): Link  # select by link id orderBy: LinkOrderByInput
 }
 type Mutation {
@@ -19,6 +19,7 @@ input LinkOrderByInput {
     artist: Sort
     url: Sort
     createdAt: Sort
+    id: Sort
 }
 type Link {
     id: ID!

@@ -34,15 +34,15 @@ async function feed(parent, args, context, info) {
             }
         }
     }
-    if(args.desc) {
-        where.AND.push({description: {contains: args.desc}})
+    if(args.description) {
+        where.AND.push({description: {contains: args.description}})
     }
-    // console.log(where)
     const links = await context.prisma.link.findMany({
         where,
         skip: args.skip,
         take: args.take,
-        orderBy: args.orderBy
+        orderBy: args.orderBy || {id: 'desc'}
+        // default order by newest on top
     })
     const count = await context.prisma.link.count({ where })
     return {
